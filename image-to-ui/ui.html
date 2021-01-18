@@ -1,0 +1,19 @@
+<style>
+body {
+  background-size: contain;
+}
+
+</style>
+<script>
+onmessage = (event) => {
+  let msgType = event.data.pluginMessage.type
+  let msg = event.data.pluginMessage
+
+  if(msgType === 'exportImage' ){
+    let imageData = msg.data
+ 
+    let base64img = `data:image/png;base64,` + btoa(String.fromCharCode.apply(null,imageData))
+    document.body.style.backgroundImage = `url(${base64img})`
+  }
+}
+</script>
